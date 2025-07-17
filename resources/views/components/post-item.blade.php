@@ -6,7 +6,7 @@
                     {{ $post->title }}
                 </h5>
             </a>
-            <div class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest
+            <div class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                 {{ Str::words($post->content, 20) }}
             </div>
             <a href="#" class="">
@@ -21,7 +21,7 @@
             </a>
         </div>
         <a href="#">
-            <img class="w-48 h-full object-cover rounded-r-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg"
+            <img class="w-48 h-full max-h-64 object-cover rounded-r-lg" src="{{ Storage::url($post->image) }}"
                 alt="" />
         </a>
     </div>

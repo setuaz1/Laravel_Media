@@ -5,7 +5,6 @@
                 <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
-                    @dump($errors)
                     <!-- Image -->
                     <div>
                         <x-input-label for="image" :value="__('Image')" />
