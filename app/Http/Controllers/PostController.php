@@ -18,12 +18,14 @@ class PostController extends Controller
     {
         $user = auth()->user();
 
+        $query = Post::latest();
+
         if($user) {
             $ids = $user->following()->pluck('users.id');
-            dd($ids);
+            $query->whereIn('user_id', $ids);
         }
 
-        $posts = Post::latest()->simplePaginate(5);
+        $posts = $query->simplePaginate(5);
 
         return view('post.index', [
             'posts' => $posts,
@@ -46,15 +48,18 @@ class PostController extends Controller
     {
         $data = $request->validated();
 
-        $image = $data['image'];
+        // $image = $data['image'];
+        
         $data['user_id'] = Auth::id();
         $data['slug'] = Str::slug($data['title']);
 
-        $imagePath = $image->store('posts', 'public');
+        // $imagePath = $image->store('posts', 'public');
+        // $data['image'] = $imagePath;
 
-        $data['image'] = $imagePath;
+        $post = Post::create($data);
 
-        Post::create($data);
+        $post->addMediaFromRequest('image')
+            ->toMediaCollection();
 
         return redirect()->route('dashboard');
     }

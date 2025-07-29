@@ -24,9 +24,10 @@
                 </x-primary-button>
             </a>
         </div>
-        <a href="#">
-            <img class="w-48 h-full max-h-64 object-cover rounded-r-lg" src="{{ Storage::url($post->image) }}"
-                alt="" />
+        <a href="{{ $post->getFirstMediaUrl() }}" target="_blank" rel="noopener noreferrer">
+            <img class="w-48 h-full max-h-64 object-cover rounded-r-lg" 
+            src="{{ $post->imageUrl() }}" 
+            alt="{{ $post->title }}" />
         </a>
     </div>
 </div>
