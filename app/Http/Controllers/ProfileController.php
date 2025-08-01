@@ -29,18 +29,13 @@ class ProfileController extends Controller
         $user = $request->user();
         $data = $request->validated();
 
-        // Handle image upload first
         if ($request->hasFile('image')) {
-        // Clear existing media in the 'avatars' collection
             $user->clearMediaCollection('avatars');
         
-        // Add new media with optimization
             $user->addMediaFromRequest('image')
-                ->usingName(pathinfo($request->file('image')->getClientOriginalName(), PATHINFO_FILENAME))
                 ->toMediaCollection('avatars', 'public');
         }
 
-        // Update other user data
         $user->fill($data);
 
         if ($user->isDirty('email')) {

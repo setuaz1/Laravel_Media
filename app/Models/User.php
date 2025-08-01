@@ -59,8 +59,19 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         $this
             ->addMediaConversion('avatar')
             ->width(128)
-            ->crop(128, 128);
+            ->crop(96, 96);
         }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('avatars')
+            ->singleFile();
+    }
+
+    public function imageUrl()
+    {
+        return $this->getFirstMedia('avatars')?->getUrl('avatar');
+    }
 
     public function posts()
     {
@@ -77,12 +88,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');
     }
 
-    public function imageUrl()
-    {
-        return $this->getFirstMedia()?->getUrl();
-    }
-
-    public function isFollowedBy(?User $user) 
+    public function isFollowedBy(?User $user)
     {
         if (!$user) {
             return false;
