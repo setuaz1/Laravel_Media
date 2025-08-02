@@ -59,7 +59,14 @@ class Post extends Model implements HasMedia
 
         public function imageUrl($conversionName = '')
         {
-            return $this->getFirstMedia()?->getUrl($conversionName);
+            $media = $this->getFirstMedia();
+            if (!$media) {
+                return null;
+            }
+            if ($media?->hasGeneratedConversion('avatar')) {
+                return $media->getUrl($conversionName);
+            }
+            return $media->getUrl();
         }
 
         public function getCreatedAt(Post $post) {

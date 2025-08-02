@@ -19,8 +19,8 @@
 
         {{-- @if ($user->hasMedia('avatars'))
             <div>
-                <img src="{{ $user->getFirstMediaUrl('avatars') }}?v={{ time() }}" 
-                    alt="{{ $user->name }}" 
+                <img src="{{ $user->getFirstMediaUrl('avatars') }}?v={{ time() }}"
+                    alt="{{ $user->name }}"
                     class="rounded-full h-20 w-20">
             </div>
         @endif --}}

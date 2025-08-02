@@ -70,7 +70,11 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
 
     public function imageUrl()
     {
-        return $this->getFirstMedia('avatars')?->getUrl('avatar');
+        $media = $this->getFirstMedia('avatars');
+        if ($media?->hasGeneratedConversion('avatar')) {
+            return $media->getUrl('avatar');
+        }
+        return $media->getUrl();
     }
 
     public function posts()
