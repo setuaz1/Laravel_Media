@@ -37,6 +37,12 @@ class Post extends Model implements HasMedia
             ->width(1200);    
         }
 
+        public function registerMediaCollections(): void
+        {
+            $this->addMediaCollection('default')
+                ->singleFile();
+        }
+
         public function getSlugOptions() : SlugOptions
         {
             return SlugOptions::create()
