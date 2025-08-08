@@ -2,5 +2,5 @@ The project is created by: Breeze, Tailwind, Alpine, Spatie Media library, Spati
 
 In this project we implemented creating of the page, posts and follow/unfollow system;
 
-![MainPage](![MainPage](image1.png))
-![MainPage](![MainPage](image2.png))
+![Laravel_Media](![MainPage](image1.png))
+![Laravel_Media](![MainPage](image2.png))
