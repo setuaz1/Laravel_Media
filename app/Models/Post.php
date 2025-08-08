@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Spatie\Sluggable\HasSlug;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Sluggable\SlugOptions;
@@ -86,7 +87,7 @@ class Post extends Model implements HasMedia
             return $media->getUrl();
         }
 
-        public function getCreatedAt(Post $post) {
-            return $post->created_at->format('M d, Y');
+        public function getPublishedAt(Post $post) {
+            return Carbon::parse($post->published_at)->format('M d, Y, g:i a');
         }
 }

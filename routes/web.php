@@ -20,34 +20,34 @@ Route::get('/', [PostController::class, 'index'])
 Route::get('/@{username}/{post:slug}', [PostController::class, 'show'])
     ->name('post.show');
 
-Route::middleware(['auth', 'verified'])->group(function () {
-
-    Route::get('/category/{category}', [PostController::class, 'category'])
+Route::get('/category/{category}', [PostController::class, 'category'])
     ->name('post.byCategory');
 
+Route::middleware(['auth', 'verified'])->group(function () {
+
     Route::get('/post/create', [PostController::class, 'create'])
-    ->name('post.create');
+        ->name('post.create');
 
     Route::post('/post/create', [PostController::class, 'store'])
-    ->name('post.store');
-    
+        ->name('post.store');
+
     Route::get('/post/{post:slug}', [PostController::class, 'edit'])
-    ->name('post.edit');
+        ->name('post.edit');
 
     Route::put('/post/{post}', [PostController::class, 'update'])
-    ->name('post.update');
-    
+        ->name('post.update');
+
     Route::delete('/post/{post}', [PostController::class, 'destroy'])
-    ->name('post.destroy');
+        ->name('post.destroy');
 
     Route::get('/my-posts', [PostController::class, 'myPosts'])
-    ->name('myPosts');
+        ->name('myPosts');
 
     Route::post('/follow/{user}', [FollowerController::class, 'followUnfollow'])
-    ->name('follow');
+        ->name('follow');
 
     Route::post('/clap/{post}', [ClapController::class, 'clap'])
-    ->name('clap');
+        ->name('clap');
 });
 
 Route::middleware('auth')->group(function () {

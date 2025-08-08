@@ -13,16 +13,14 @@
             <div class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                 {{ Str::words($post->content, 20) }}
             </div>
-            <div 
-                class="text-sm text-gray-400 flex gap-4 items-end">
+            <div class="text-sm text-gray-400 flex gap-4 items-end">
                 <div class="text-gray-600 flex gap-1">
                     published by
-                    <a href="{{ route('profile.show', $post->user->username) }}"
-                    class="hover:underline">
-                    {{$post->user->name}}            
-                    </a>  
-                    | {{ $post->getCreatedAt($post) }}         
-                </div>    
+                    <a href="{{ route('profile.show', $post->user->username) }}" class="hover:underline">
+                        {{ $post->user->name }}
+                    </a>
+                    | {{ $post->getPublishedAt($post) }}
+                </div>
                 <span class="inline-flex gap-1 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
