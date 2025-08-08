@@ -3,4 +3,4 @@ The project is created by: Breeze, Tailwind, Alpine, Spatie Media library, Spati
 In this project we implemented creating of the page, posts and follow/unfollow system;
 
 ![MainPage](image1.png)
-![MainPage](image1.png)
+![MainPage](image2.png)
